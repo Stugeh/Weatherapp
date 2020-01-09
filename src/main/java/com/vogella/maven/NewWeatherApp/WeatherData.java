@@ -13,13 +13,22 @@ public class WeatherData {
 	private double apparentTemperature, temperature, windSpeed;
 	private LocalTime clock;
 
+	
 	public WeatherData(HttpResponse<JsonNode> response) {
+		/*Creates WeatherData object that has everything that needs to be accessed.
+		 * 
+		 * The input has nested Json tables so i need to open upthem all up.
+		 * data has all the important stuff. current, hourly and daily have the forecasts for the near future.
+		 * 
+		 * */
+		
 		JSONObject data = response.getBody().getObject();
 		JSONObject current = (JSONObject) data.get("currently");
 		JSONObject hourly = (JSONObject) data.get("hourly");
 		JSONObject daily = (JSONObject) data.get("daily");
 		
 		this.setClock(LocalTime.now());
+		//FAHRENTHEIT TO CELCIUS UNIT CONVERSION
 		this.temperature = (current.getDouble("temperature") - 32) * 5 / 9;
 		this.apparentTemperature = (current.getDouble("apparentTemperature") - 32) * 5 / 9;
 		this.cloudCover = current.getString("cloudCover");
@@ -29,6 +38,7 @@ public class WeatherData {
 		this.precipProbability = current.getString("precipProbability");
 		this.time = current.getString("time");
 		this.visibility = current.getString("visibility");
+		//MPH TO M/S UNIT CONVERSION
 		this.windSpeed = current.getDouble("windSpeed") * 0.44704;
 		this.windBearing = current.getString("windBearing");
 		this.dlySummary = daily.getString("summary");
