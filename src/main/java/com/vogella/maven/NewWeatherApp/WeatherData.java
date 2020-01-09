@@ -1,14 +1,21 @@
 package com.vogella.maven.NewWeatherApp;
 
+import java.util.Map;
+
 public class WeatherData {
 	
 	private String summary, temperature;
 	private String currently, hourly, daily;
 	
-	public WeatherData(String summary, String Temperature) {
-		
-	}
 
+    
+	@SuppressWarnings("unchecked")
+	private void unpackNested(Map<String,Object> keylist, String key) {
+		Map<String,String> timeframe = (Map<String, String>)keylist.get(key);
+        this.summary = (String)timeframe.get("summary");
+        this.temperature = (String)timeframe.get("temperature");
+        
+    }
 
 	
 	/*Getters and setters*/
