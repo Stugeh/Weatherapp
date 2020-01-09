@@ -1,14 +1,22 @@
 package com.vogella.maven.NewWeatherApp;
-import kong.unirest.*;
+
+import kong.unirest.HttpResponse;
+import kong.unirest.Unirest;
 
 public class WeatherMain {
 	
 	public static void main(String[] args) throws Exception{
+		@SuppressWarnings("unused")
+		HttpResponse<kong.unirest.JsonNode> response = Unirest.get("https://api.darksky.net/forecast/847c94249ad8a47be419557c13ede9a3/65.5267,25.4233").asJson(); 		
+		WeatherData weather = new WeatherData(response);
+		System.out.println(weather);
+
 		
-		final HttpResponse<JsonNode> response = Unirest.get("https://api.darksky.net/forecast/847c94249ad8a47be419557c13ede9a3/65.5267,25.4233").asJson(); 
-			
-				 //String summary = response.getBody().getObject().getString("summary");
-				 //String temperature = response.getBody().getObject().getString("temperature");
+		
+				
+				
+		//WeatherData currently = new WeatherData(response, "currently");
+				 
 				 
 		//response = Unirest.toString(response);
 		//System.out.printf(temperature, "C\n", summary );
