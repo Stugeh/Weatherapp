@@ -12,6 +12,18 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+    
+<repositories>
+	<repository>
+        <id>jitpack.io</id>
+        <url>https://jitpack.io</url>
+    </repository>
+    <repository>
+    <id>jcenter</id>
+    <name>jcenter-bintray</name>
+    <url>https://jcenter.bintray.com</url>
+</repository>
+</repositories>
 
     <build>
         <plugins>
@@ -33,9 +45,14 @@
     		<version>3.3.00</version>
     	</dependency>
     	<dependency>
-    <groupId>com.fasterxml.jackson.core</groupId>
-    <artifactId>jackson-databind</artifactId>
-    <version>2.10.2</version>
-</dependency>
+    		<groupId>com.fasterxml.jackson.core</groupId>
+    		<artifactId>jackson-databind</artifactId>
+    		<version>2.10.2</version>
+		</dependency>
+    	<dependency>
+    		<groupId>net.dv8tion</groupId>
+    		<artifactId>JDA</artifactId>
+    		<version>4.1.0_81</version>
+    	</dependency>
     </dependencies>
 </project>
