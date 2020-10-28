@@ -12,6 +12,8 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter;
 public class WeatherMain {
 	
 	public static void main(String[] args) throws Exception{
+		//horrible practice to have token in code like this.
+		String token = "SECRET";
 		HttpResponse<kong.unirest.JsonNode> response = Unirest.get("https://api.darksky.net/forecast/847c94249ad8a47be419557c13ede9a3/65.5267,25.4233").asJson(); 		
 		JDA jda = new JDABuilder(token).build();
 		jda.addEventListener(new DiscordBot());
